@@ -1,10 +1,6 @@
 package ejercicio_mysql;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 
 public abstract class Servicio {
     private String USER="root";
@@ -34,6 +30,21 @@ public abstract class Servicio {
             if (!rs.isClosed()) {
                 rs.close();
             }
+            if (!stmt.isClosed()) {
+                stmt.close();
+            }
+            if (!conn.isClosed()) {
+                conn.close();
+            }
+        }
+        catch (Exception e) {
+            System.out.println("Error al cerrar la conexion");
+            e.printStackTrace();
+        }
+    }
+
+    protected void cerrar(Connection conn, PreparedStatement stmt) {
+        try {
             if (!stmt.isClosed()) {
                 stmt.close();
             }

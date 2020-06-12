@@ -11,6 +11,10 @@ public class App {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
 
         ServicioUsuario su = new ServicioUsuario();
+
+        Usuario user = new Usuario("Pablo Porras", 18, "pablo@porras.com", "coolpassword");
+        su.insertUsuario(user);
+
         for (Usuario u : su.getUsuarios()){
             System.out.println(u);
         }

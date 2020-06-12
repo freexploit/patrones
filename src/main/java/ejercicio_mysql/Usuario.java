@@ -9,16 +9,11 @@ public class Usuario {
 
     public Usuario() {}
 
-
-    @Override
-    public String toString() {
-        return "Usuario{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", edad=" + edad +
-                ", correo='" + correo + '\'' +
-                ", clave='" + clave + '\'' +
-                '}';
+    public Usuario(String nombre, int edad, String correo, String clave) {
+        this.nombre = nombre;
+        this.edad = edad;
+        this.correo = correo;
+        this.clave = clave;
     }
 
     public Usuario(int id, String nombre, int edad, String correo, String clave) {
@@ -67,5 +62,16 @@ public class Usuario {
 
     public void setClave(String clave) {
         this.clave = clave;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", edad=" + edad +
+                ", correo='" + correo + '\'' +
+                ", clave='" + clave + '\'' +
+                '}';
     }
 }
