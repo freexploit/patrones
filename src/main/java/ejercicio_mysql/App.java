@@ -10,31 +10,10 @@ public class App {
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
 
-        String USER="root";
-        String PASS="admin";
-        String DB_URL = String.format("jdbc:mysql://localhost/NEW_DB?user=%s&password=%s",USER,PASS);
-        Connection conn;
-
-        System.out.println("Connecting...");
-        conn = DriverManager.getConnection(DB_URL);
-        System.out.println("Creating statement");
-        Statement smtm = conn.createStatement();
-        String sql = "select * from usuarios";
-        ResultSet rs = smtm.executeQuery(sql);
-
-        while (rs.next()) {
-            int id = rs.getInt("id");
-            String nombre = rs.getString("nombre");
-            String correo = rs.getString("correo");
-            int edad  = rs.getInt("edad");
-            String clave = rs.getString("clave");
-            String all = String.format("ID: %s Nombre: %s Correo: %s Edad: %d Clave: %s\n", id, nombre,correo,edad,clave);
-
-            System.out.println(all);
+        ServicioUsuario su = new ServicioUsuario();
+        for (Usuario u : su.getUsuarios()){
+            System.out.println(u);
         }
-        rs.close();
-        smtm.close();
-        conn.close();
 
     }
 }
