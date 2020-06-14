@@ -7,11 +7,15 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ServicioUsuario extends Servicio{
+public class ServicioUsuario extends Servicio {
 
-    public void insertUsuario(Usuario user) {
+    public void insertUsuario(Object u) {
         Connection conn = null;
         PreparedStatement  preparedStmt = null;
+        Usuario user = new Usuario();
+        if (u instanceof Usuario){
+            user = ((Usuario) u);
+        }
 
         try {
 
